@@ -1,0 +1,357 @@
+```html id="final-birthday-website"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Happy Birthday Kiddo 🎉</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      overflow-x:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#ff4d6d,#7b2cbf,#3a86ff);
+      background-size:400% 400%;
+      animation:bgMove 10s ease infinite;
+      color:white;
+      text-align:center;
+      position:relative;
+      padding:20px;
+    }
+
+    @keyframes bgMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    canvas{
+      position:fixed;
+      top:0;
+      left:0;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .container{
+      z-index:2;
+      width:100%;
+      max-width:650px;
+      padding:30px 20px;
+      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,0.12);
+      border-radius:25px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.25);
+      animation:fadeIn 2s ease;
+    }
+
+    h1{
+      font-size:3rem;
+      line-height:1.3;
+      margin-bottom:20px;
+      animation:glow 2s infinite alternate;
+    }
+
+    p{
+      font-size:1.2rem;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      border:none;
+      padding:15px 30px;
+      border-radius:50px;
+      font-size:1rem;
+      font-weight:bold;
+      background:white;
+      color:#ff006e;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+      margin-top:20px;
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+    }
+
+    .gif-box{
+      display:none;
+      margin-top:25px;
+      animation:fadeIn 1s ease;
+    }
+
+    .gif-box img{
+      width:100%;
+      max-width:220px;
+    }
+
+    .tareef-box{
+      display:none;
+      margin-top:30px;
+      animation:fadeIn 1s ease;
+    }
+
+    .tareef-text-box{
+      background:white;
+      color:#5c0000;
+      padding:25px;
+      border-radius:20px;
+      font-size:18px;
+      font-weight:600;
+      line-height:1.8;
+      text-align:center;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px rgba(255,255,255,0.6);
+      }
+      to{
+        text-shadow:0 0 30px rgba(255,255,255,1);
+      }
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:600px){
+
+      h1{
+        font-size:2rem;
+      }
+
+      p{
+        font-size:1rem;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .tareef-text-box{
+        font-size:14px;
+        line-height:1.6;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+
+  <h1>
+    🎂 Happieeeeeeeee Birthdayyyyyyyyyyyy Kiddddoooooooo 🎉
+  </h1>
+
+  <p>
+    dont be sad cauz u will look bad 🥺💖
+    <br><br>
+    wish youuuuuuu happiiie happieee vala birthdayyyy 🥳🎂✨
+  </p>
+
+  <button class="btn" onclick="showTareef()">
+      
+  <!-- SWEET MESSAGE -->
+
+  <div class="message-box" id="messageBox">
+
+    <div class="sweet-text">
+
+      You're my honeybunch sugarplum pumpy-umpy-umpkin 💖<br><br>
+
+      you're my sweety pie 🥺✨<br><br>
+
+      You're my cuppy cake gum drop snoogums-boogums 🍰💕<br><br>
+
+      you're the apple of my eye <br><br>
+
+      And I love you so and I want you to know that I'll always be right here <br><br>
+
+      And I love to sing sweet songs to you because you are so dear <br><br>
+
+
+    <button class="btn" onclick="showTareef()">
+      Click me for your tareef 💌
+    </button>
+
+  </div>
+
+  <!-- TAREEF SECTION -->
+
+  <div class="tareef-box" id="tareefBox">
+
+    <div class="tareef-text-box">
+
+      just because i dont want you to doubt yourself today.......<br><br>
+
+      YOU ARE a nice guy but YOU are dumbo.<br><br>
+
+      YOU are a great singer but you are dumbo.<br><br>
+
+      you are very kind but you are dumbo.<br><br>
+
+      jaada tareef ni kr ri ...hpppppp....kiddddooooss.....huh.....dumbo ❤️
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let W = window.innerWidth;
+let H = window.innerHeight;
+
+canvas.width = W;
+canvas.height = H;
+
+const confetti = [];
+
+const colors = [
+  "#ff0a54",
+  "#ff477e",
+  "#ff7096",
+  "#f72585",
+  "#7209b7",
+  "#3a86ff",
+  "#4cc9f0",
+  "#ffbe0b"
+];
+
+function random(min,max){
+  return Math.random()*(max-min)+min;
+}
+
+function createConfetti(){
+
+  for(let i=0;i<200;i++){
+
+    confetti.push({
+
+      x: random(0,W),
+      y: random(-H,H),
+      r: random(4,10),
+      d: random(10,30),
+      color: colors[Math.floor(Math.random()*colors.length)],
+      tilt: random(-10,10),
+      tiltAngle: 0,
+      tiltSpeed: random(0.05,0.12)
+
+    });
+  }
+}
+
+function drawConfetti(){
+
+  ctx.clearRect(0,0,W,H);
+
+  confetti.forEach(c=>{
+
+    ctx.beginPath();
+
+    ctx.lineWidth = c.r;
+
+    ctx.strokeStyle = c.color;
+
+    ctx.moveTo(c.x + c.tilt + c.r/3, c.y);
+
+    ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r/5);
+
+    ctx.stroke();
+
+  });
+
+  updateConfetti();
+}
+
+function updateConfetti(){
+
+  confetti.forEach((c,index)=>{
+
+    c.tiltAngle += c.tiltSpeed;
+
+    c.y += (Math.cos(c.d)+3+c.r/2)/2;
+
+    c.tilt = Math.sin(c.tiltAngle)*15;
+
+    if(c.y > H){
+
+      confetti[index] = {
+
+        ...c,
+
+        x: random(0,W),
+
+        y: -20
+      };
+    }
+  });
+}
+
+function animate(){
+
+  drawConfetti();
+
+  requestAnimationFrame(animate);
+}
+
+function showGif(){
+
+  document.getElementById("gifBox").style.display = "block";
+}
+
+function showTareef(){
+
+  document.getElementById("tareefBox").style.display = "block";
+}
+
+createConfetti();
+
+animate();
+
+window.addEventListener("resize", ()=>{
+
+  W = window.innerWidth;
+
+  H = window.innerHeight;
+
+  canvas.width = W;
+
+  canvas.height = H;
+});
+
+</script>
+
+</body>
+</html>
+```
